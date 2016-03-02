@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Test1.hpp"
 #include "Test2.hpp"
 

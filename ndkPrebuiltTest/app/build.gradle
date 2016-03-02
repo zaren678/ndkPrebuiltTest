@@ -22,6 +22,10 @@ model {
             versionCode = 1
             versionName = "1.0"
         }
+
+        dexOptions.with {
+            javaMaxHeapSize '4g'
+        }
     }
 
     android.ndk {
@@ -40,8 +44,6 @@ model {
                        "dl",
                        "log"])
         stl = "gnustl_shared"
-
-        abiFilters.addAll( [ 'armeabi-v7a', 'x86' ] )
     }
 
     android.buildTypes {
@@ -57,9 +59,23 @@ model {
                     srcDirs = [ "src/main/jni" ]
                 }
                 dependencies {
+                    project ':mylibrary'
+                    project ':mylibrary2'
                     library "jsoncpp"
                 }
             }
+        }
+    }
+
+    android.productFlavors {
+        create("arm7") {
+            ndk.abiFilters.add( "armeabi-v7a" )
+        }
+        create("x86") {
+            ndk.abiFilters.add( "x86" )
+        }
+        create("fat") {
+            ndk.abiFilters.addAll( [ 'armeabi-v7a', 'x86' ] )
         }
     }
 }
@@ -68,4 +84,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
+
+    compile project( ':mylibrary' )
+    compile project( ':mylibrary2' )
 }
