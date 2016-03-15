@@ -59,9 +59,9 @@ model {
                     srcDirs = [ "src/main/jni" ]
                 }
                 dependencies {
-                    project ':mylibrary'
-                    project ':mylibrary2'
-                    library "jsoncpp"
+                    //project ':mylibrary'
+                    //project ':mylibrary2'
+                    //library "jsoncpp"
                 }
             }
         }
@@ -85,6 +85,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
 
-    compile project( ':mylibrary' )
-    compile project( ':mylibrary2' )
+    //compile project( ':mylibrary' )
+    //compile project( ':mylibrary2' )
 }

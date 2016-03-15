@@ -10,5 +10,7 @@ public class MainApplication extends Application
         super.onCreate();
 
         System.loadLibrary( "test" );
+
+        HybridDebuggerTest.callCplusplus();
     }
 }
